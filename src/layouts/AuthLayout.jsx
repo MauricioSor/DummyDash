@@ -11,7 +11,6 @@ const defaultTheme = createTheme();
 
 export default function AuthLayout() {
     
-
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -22,16 +21,11 @@ export default function AuthLayout() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-          }}
-        >
-
+            }}>
           <Routes>
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
           </Routes>
-          
-
-
         </Box>
         <FooterLayout sx={{ mt: 8, mb: 4 }} />
       </Container>

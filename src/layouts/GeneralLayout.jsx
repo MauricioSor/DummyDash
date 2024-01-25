@@ -16,7 +16,6 @@ const defaultTheme = createTheme();
 export function GeneralLayout() {
     const [open, setOpen] = React.useState(true);
     const { state, logout } = useContext(AuthContext);
-
     const toggleDrawer = () => {
         setOpen(!open);
     };
@@ -40,12 +39,12 @@ export function GeneralLayout() {
             flexGrow: 1,
             height: '100vh',
             overflow: 'auto',}}>
-          <Toolbar />
+          <Toolbar/>
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}> 
           <Routes>
             <Route path='/products' element={<ProductsPage />} />
-            <Route path='/users' element={<h1>USERS PAGE</h1>} />
-            <Route path='/sales' element={<h1>SALES PAGE</h1>} />
+            <Route path='/users' element={<h1>USERS PAGE</h1>} />{/* Empty */}
+            <Route path='/sales' element={<h1>SALES PAGE</h1>} />{/* Empty */}
           </Routes>
           <FooterLayout sx={{ pt: 4 }} />
           </Container>

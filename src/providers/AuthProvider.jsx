@@ -10,15 +10,17 @@ const initialValues = {
   message: ''
 }
 export const AuthProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AuthReducer, initialValues);
+  const [state, dispatch] = useReducer(AuthReducer/*Llamo al reducer*/, initialValues/*valor inicial */);
   //#region Funciones
   //Funcion login
   const login = async (username, pass) => {
     const { data } = await axiosDash.post('/auth/login', {
-      username: username,
+      //Toma los datos pasados al llamar la func. login
+      username: username, 
       password: pass,
     });
     const objectStorage = {
+      //Defino el objeto a guardar
       user: {
         id: data.id,
         username: data.username,
@@ -29,7 +31,7 @@ export const AuthProvider = ({ children }) => {
       },
       token: data.token
     }
-    sessionStorage.setItem('token', JSON.stringify(objectStorage));
+    sessionStorage.setItem('token', JSON.stringify(objectStorage));//Guardo los datos en el storage
     dispatch({
       type: 'LOGIN',
       payload: {
@@ -47,14 +49,15 @@ export const AuthProvider = ({ children }) => {
   }
   //Funcion chequeo de sesion
   const checkToken = async () => {
-    const dataToken = JSON.parse(sessionStorage.getItem('token')) || "";
+    const dataToken = JSON.parse(sessionStorage.getItem('token')) || "";//Leo el sessionStorage
+    //Evaluo dataToken
     if (dataToken== "") {
       dispatch({
-        type: 'LOGOUT'
+        type: 'LOGOUT'//Disparo la accion de logout
       });
     }else{
       dispatch({
-        type: 'LOGIN',
+        type: 'LOGIN',//Disparo la accion login
         payload: {
           user: {
             id: dataToken.user.id,
@@ -71,9 +74,9 @@ export const AuthProvider = ({ children }) => {
   }
   //Funcion logout
   const logout = () => {
-    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("token");//limpio el storage
     dispatch({
-      type: 'LOGOUT',
+      type: 'LOGOUT',//Disparo la func logout
     })
   }
   //#endregion

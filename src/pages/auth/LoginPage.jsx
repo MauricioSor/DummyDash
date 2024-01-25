@@ -15,6 +15,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 export const LoginPage = () => {
     //Instanciando el reducer AuthReducer por medio de su contexto AuthContext
     const { state, login } = useContext(AuthContext);
+    const title = 'DashDummy';//Solamente se fija el titulo
     //Instancia de custom Hook useForm , desesctructura de funcion onChangeInput dentro de hook useForm
     const { formState, onChangeInput } = useForm();
     const handleSubmitLogin = (event) => {
@@ -81,6 +82,7 @@ export const LoginPage = () => {
               </Grid>
             </Grid>
           </Box>
+          {/* Recordatorio de usuario para ingresar */}
           <Box marginTop={5} textAlign={'left'}>
             <Typography variant='body2' data-testid='test-login'>User: kminchelle</Typography>
             <Typography variant='body2' data-testid='test-login'>Pass: 0lelplR</Typography>

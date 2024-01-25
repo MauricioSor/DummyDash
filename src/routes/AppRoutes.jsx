@@ -9,9 +9,9 @@ import { AuthContext } from '../contexts/AuthContext'
 export const AppRoutes = () => {
   //Instancia de reducer
   const { state, checkToken } = useContext(AuthContext);
-  const isLogged = state.isLogged;//Leo lo que hay dentro del state de AuthContext
+  const isLogged = state.isLogged;//Leo lo que hay dentro del state de AuthContext y lo defino en una const
   useEffect(() => {
-    checkToken();
+    checkToken();//Llamo a la funcion que esta dentro de mi hook AuthContext y compruebo la sesion
   }, [])
   return (
     <Routes>
